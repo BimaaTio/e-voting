@@ -19,6 +19,7 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/img/smk.png" type="image/x-icon">
 
     <?php if ($title == '') : ?>
         <title>E-Voting &mdash; Dashboard</title>
@@ -221,7 +222,11 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
                     'excel', 'print', 'pdf'
                 ]
             }).buttons().container().appendTo('#akunGuru_wrapper .col-md-4:eq(0)');
-
+            $('#vote').DataTable({
+                searching: false,
+                dom: 'LfBrtip',
+                buttons: ['excel', 'print', 'pdf'],
+            });
             //Show data to modal
             $(document).on('click', 'a[data-role=editKandidat]', function() {
                 const id = $(this).data('id');

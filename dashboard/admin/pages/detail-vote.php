@@ -48,10 +48,10 @@ $row = query("SELECT c.nis, c.nama, c.kelas,
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="vote">
             <thead class="text-center">
               <tr>
-                <th>No</th>
+                <th width="1%">No</th>
                 <th>Vote By</th>
                 <th>Status Vote</th>
                 <th>Tgl Vote</th>
@@ -60,15 +60,24 @@ $row = query("SELECT c.nis, c.nama, c.kelas,
             <tbody class="text-center">
               <?php foreach ($row as $d) : ?>
                 <tr>
-                  <td><?= $no++ ?></td>
+                  <?php if ($d['status_vote'] === NULL) : ?>
+                    <td></td>
+                  <?php else : ?>
+                    <td><?= $no++ ?></td>
+                  <?php endif; ?>
                   <td><?= $d['vote_nama'] ?></td>
                   <?php if ($d['status_vote'] === '1') : ?>
                     <td><span class="badge bg-success text-white">Naik</span></td>
                   <?php endif; ?>
-                  <?php if($d['status_vote'] === '0') :?>
+                  <?php if ($d['status_vote'] === '0') : ?>
                     <td><span class="badge bg-warning text-white">Tidak Naik</span></td>
                   <?php endif; ?>
-                  <td><?= $d['tgl_vote'] ?></td>
+                  <?php if ($d['tgl_vote'] === NULL) : ?>
+                    <td></td>
+                    <td></td>
+                  <?php else : ?>
+                    <td><?= $d['tgl_vote'] ?></td>
+                  <?php endif; ?>
                 </tr>
               <?php endforeach; ?>
             </tbody>

@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-  if (registerGuru($_POST) > 0) {
+  if (register($_POST) > 0) {
     echo
     "
       <script>

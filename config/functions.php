@@ -32,7 +32,8 @@ function randNumb($lenght = 10){
   }
   return $random;
 }
-function registerGuru($data) {
+function register($data)
+{
   global $conn;
 
   $uid    = substr(randNumb(), 4);

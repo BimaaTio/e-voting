@@ -1,4 +1,4 @@
-<?php 
+<?php
 $data = query("SELECT c.nis, c.nama, c.kelas,
               COALESCE(v.total_vote, 0) AS total_vote,
               COALESCE(v.total_vote_naik, 0) AS total_vote_naik,
@@ -16,7 +16,7 @@ $data = query("SELECT c.nis, c.nama, c.kelas,
           GROUP BY vote.nis
         ) v ON c.nis = v.nis;
 ");
-$no=1;
+$no = 1;
 ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">Data Vote</h1>
@@ -42,7 +42,7 @@ $no=1;
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="vote">
             <thead class="text-center">
               <tr>
                 <th>No</th>
@@ -54,18 +54,22 @@ $no=1;
               </tr>
             </thead>
             <tbody class="text-center">
-              <?php foreach($data as $d) :?>
+              <?php foreach ($data as $d) : ?>
                 <tr>
                   <td><?= $no++ ?></td>
                   <td><?= $d['nis'] ?></td>
                   <td><?= $d['nama'] ?></td>
                   <td><?= $d['kelas'] ?></td>
-                  <td><?= $d['total_vote'] ?></td>
+                  <?php if ($d['total_vote'] <= 1) : ?>
+                    <td><span class="badge bg-warning">Belum ada vote</span></td>
+                  <?php else : ?>
+                    <td><?= $d['total_vote'] ?></td>
+                  <?php endif; ?>
                   <td>
                     <a href="?hal=detail-vote&nis=<?= $d['nis'] ?>" class="btn btn-sm btn-success"><i class="fas fa-info-circle"></i></a>
                   </td>
                 </tr>
-              <?php endforeach;?>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>
