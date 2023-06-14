@@ -14,6 +14,7 @@ if(isset($_GET['uid'])){
 if (isset($_GET['nis'])) {
   $nis = $_GET['nis'];
   mysqli_query($conn, "DELETE FROM candidate WHERE nis = $nis");
+  mysqli_query($conn, "DELETE FROM vote WHERE nis = $nis");
   echo "
   <script>
       document.location.href = 'index.php?hal=data-kandidat&sip=1&msg=Berhasil Dihapus';

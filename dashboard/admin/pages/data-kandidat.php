@@ -17,8 +17,8 @@ if (isset($_POST['tambahKandidat'])) {
   }
 }
 
-if(isset($_POST['editKandidat'])) {
-  if(editKandidat($_POST) > 0){
+if (isset($_POST['editKandidat'])) {
+  if (editKandidat($_POST) > 0) {
     echo
     "
       <script>
@@ -67,7 +67,6 @@ $dataKandidat = query("SELECT * FROM candidate");
             <thead class="text-center">
               <tr>
                 <th>No</th>
-                <th>NIS</th>
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Tgl Dibuat</th>
@@ -79,7 +78,6 @@ $dataKandidat = query("SELECT * FROM candidate");
               foreach ($dataKandidat as $dk) : ?>
                 <tr id="<?= $dk['nis'] ?>">
                   <td data-id="<?= $dk['nis'] ?>"><?= $no++ ?></td>
-                  <td data-target="nis"><?= $dk['nis'] ?></td>
                   <td data-target="nama"><?= $dk['nama'] ?></td>
                   <td data-target="kelas"><?= $dk['kelas'] ?></td>
                   <td><?= $dk['tgl_dibuat'] ?></td>
@@ -109,12 +107,6 @@ $dataKandidat = query("SELECT * FROM candidate");
           </button>
         </div>
         <div class="modal-body">
-          <div class="mb-3 row">
-            <label for="nis" class="col-sm-2 col-form-label">NIS :</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" name="nis" id="nis" required>
-            </div>
-          </div>
           <div class="mb-3 row">
             <label for="name" class="col-sm-2 col-form-label">Nama :</label>
             <div class="col-sm-10">
@@ -151,13 +143,7 @@ $dataKandidat = query("SELECT * FROM candidate");
           </button>
         </div>
         <div class="modal-body">
-          <div class="mb-3 row">
-            <label for="nis" class="col-sm-2 col-form-label">NIS :</label>
-            <div class="col-sm-10">
-              <input type="hidden" name="id" id="id">
-              <input type="number" class="form-control" name="editNis" id="editNis" required>
-            </div>
-          </div>
+          <input type="hidden" name="id" id="id">
           <div class="mb-3 row">
             <label for="name" class="col-sm-2 col-form-label">Nama :</label>
             <div class="col-sm-10">

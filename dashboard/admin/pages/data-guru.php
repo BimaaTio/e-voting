@@ -17,8 +17,8 @@ if (isset($_POST['submit'])) {
       ";
   }
 }
-if(isset($_POST['editAkun'])){
-  if(editAkun($_POST) > 0) {
+if (isset($_POST['editAkun'])) {
+  if (editProfile($_POST) > 0) {
     echo
     "
       <script>
@@ -70,6 +70,7 @@ $dataGuru = query("SELECT * FROM users WHERE level='guru'");
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
+                  <th>Username</th>
                   <th>Email</th>
                   <th>Tgl Dibuat</th>
                   <th></th>
@@ -81,6 +82,7 @@ $dataGuru = query("SELECT * FROM users WHERE level='guru'");
                   <tr id="<?= $dg['uid'] ?>">
                     <td data-id="<?= $dg['uid'] ?>"><?= $no++ ?></td>
                     <td data-target="nama"><?= $dg['nama'] ?></td>
+                    <td data-target="username"><?= $dg['username'] ?></td>
                     <td data-target="email"><?= $dg['email'] ?></td>
                     <td><?= $dg['tgl_dibuat'] ?></td>
                     <td>
@@ -113,6 +115,12 @@ $dataGuru = query("SELECT * FROM users WHERE level='guru'");
             <label for="name" class="col-sm-2 col-form-label">Name:</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="name" class="col-sm-2 col-form-label">Username:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="username" id="username" required>
             </div>
           </div>
           <div class="mb-3 row">
@@ -152,6 +160,13 @@ $dataGuru = query("SELECT * FROM users WHERE level='guru'");
             <div class="col-sm-10">
               <input type="hidden" name="id" id="id">
               <input type="text" class="form-control" name="name" id="editName" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="name" class="col-sm-2 col-form-label">Username:</label>
+            <div class="col-sm-10">
+              <input type="hidden" name="id" id="id">
+              <input type="text" class="form-control" name="username" id="editUsername" required>
             </div>
           </div>
           <div class="mb-3 row">

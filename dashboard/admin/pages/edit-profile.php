@@ -1,6 +1,6 @@
-<?php 
-if(isset($_POST['submit'])){
-  if(editProfile($_POST) > 0){
+<?php
+if (isset($_POST['submit'])) {
+  if (editProfile($_POST) > 0) {
     echo
     "
       <script>
@@ -8,7 +8,6 @@ if(isset($_POST['submit'])){
       document.location.href='?hal=profile';
       </script>
       ";
-      
   } else {
     echo
     "
@@ -38,6 +37,12 @@ if(isset($_POST['submit'])){
           </div>
         </div>
         <div class="mb-3 row">
+          <label for="nama" class="col-sm-2 col-form-label">Username :</label>
+          <div class="col-sm">
+            <input type="text" name="username" class="form-control" value="<?= $dataLogin['username'] ?>" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
           <label for="email" class="col-sm-2 col-form-label">Email :</label>
           <div class="col-sm">
             <input type="text" name="email" class="form-control" value="<?= $dataLogin['email'] ?>" required>
@@ -45,7 +50,7 @@ if(isset($_POST['submit'])){
         </div>
         <div class="mb-3 row text-right">
           <div class="col-sm">
-            <button  class="btn btn-info mb-2" type="submit" name="submit"><i class="fas fa-check"></i> Submit</button>
+            <button class="btn btn-info mb-2" type="submit" name="submit"><i class="fas fa-check"></i> Submit</button>
             <a href="?hal=profile" class="btn btn-success mb-2"><i class="fas fa-arrow-left"> Kembali</i></a>
           </div>
         </div>

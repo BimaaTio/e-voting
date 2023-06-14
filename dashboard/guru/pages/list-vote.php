@@ -1,3 +1,13 @@
+<?php
+$listVote = query("SELECT c.nis, c.nama, c.kelas
+FROM candidate c
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM vote v
+  WHERE v.nis = c.nis
+    AND v.uid = $uid
+)");
+?>
 <div class="row">
   <div class="col">
     <?php if (isset($_GET['sip']) == 'berhasil' && isset($_GET['msg'])) : ?>
@@ -40,15 +50,18 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <a href="?hal=vote&nis=" class="btn btn-sm btn-success"><i class="fas fa-bullhorn"></i> Vote</a>
-                </td>
-              </tr>
+              <?php $no = 1;
+              foreach ($listVote as $kandidat) : ?>
+                <tr>
+                  <td><?= $no++ ?></td>
+                  <td><?= $kandidat['nis'] ?></td>
+                  <td><?= $kandidat['nama'] ?></td>
+                  <td><?= $kandidat['kelas'] ?></td>
+                  <td>
+                    <a href="?hal=vote&nis=<?= $kandidat['nis'] ?>" class="btn btn-sm btn-success"><i class="fas fa-bullhorn"></i> Vote</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

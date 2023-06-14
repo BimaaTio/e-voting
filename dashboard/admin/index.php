@@ -234,7 +234,6 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
                 let kelas = $.trim($('#' + id).children('td[data-target=kelas]').text());
 
                 $('#id').val(id);
-                $('#editNis').val(id);
                 $('#editNama').val(nama);
                 $('#editKelas').val(kelas);
                 $('#editKandidat').modal('toggle');
@@ -244,10 +243,12 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
                 const id = $(this).data('id');
                 let nama = $.trim($('#' + id).children('td[data-target=nama]').text());
                 let email = $.trim($('#' + id).children('td[data-target=email]').text());
+                let username = $.trim($('#' + id).children('td[data-target=username]').text());
 
                 $('#id').val(id);
                 $('#editName').val(nama);
                 $('#editEmail').val(email);
+                $('#editUsername').val(username);
                 $('#editAkun').modal('toggle');
             });
 

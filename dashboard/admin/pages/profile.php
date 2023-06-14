@@ -16,6 +16,12 @@
         </div>
       </div>
       <div class="mb-3 row">
+        <label for="nama" class="col-sm-2 col-form-label">Username :</label>
+        <div class="col-sm">
+          <input type="text" class="form-control" readonly value="<?= $dataLogin['username'] ?>">
+        </div>
+      </div>
+      <div class="mb-3 row">
         <label for="email" class="col-sm-2 col-form-label">Email :</label>
         <div class="col-sm">
           <input type="text" class="form-control" readonly value="<?= $dataLogin['email'] ?>">

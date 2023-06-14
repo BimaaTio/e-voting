@@ -50,6 +50,8 @@ $no = 1;
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Total Vote</th>
+                <th>Vote Naik</th>
+                <th>Vote Tidak Naik</th>
                 <th></th>
               </tr>
             </thead>
@@ -60,11 +62,13 @@ $no = 1;
                   <td><?= $d['nis'] ?></td>
                   <td><?= $d['nama'] ?></td>
                   <td><?= $d['kelas'] ?></td>
-                  <?php if ($d['total_vote'] <= 1) : ?>
+                  <?php if ($d['total_vote'] == 0) : ?>
                     <td><span class="badge bg-warning">Belum ada vote</span></td>
                   <?php else : ?>
                     <td><?= $d['total_vote'] ?></td>
                   <?php endif; ?>
+                  <td><?= $d['total_vote_naik'] ?></td>
+                  <td><?= $d['total_vote_tidak_naik'] ?></td>
                   <td>
                     <a href="?hal=detail-vote&nis=<?= $d['nis'] ?>" class="btn btn-sm btn-success"><i class="fas fa-info-circle"></i></a>
                   </td>

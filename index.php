@@ -2,10 +2,11 @@
 session_start();
 require 'config/functions.php';
 if (isset($_POST['masuk'])) {
-  $email = $_POST['email'];
+  $email = $_POST['credentials'];
+  $username = $_POST['credentials'];
   $pass  = $_POST['pass'];
 
-  $cek = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+  $cek = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' || username = '$username'");
   if (mysqli_num_rows($cek) === 1) {
     $row = mysqli_fetch_assoc($cek);
     if ($row['level'] === 'admin') {
@@ -53,8 +54,8 @@ if (isset($_POST['masuk'])) {
       <?php endif; ?>
       <h1 class="h3 mb-3 fw-normal">Login E-Voting</h1>
       <div class="form-floating">
-        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+        <input name="credentials" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Username</label>
       </div>
       <div class="form-floating">
         <input name="pass" type="password" class="form-control" id="floatingPassword" placeholder="Password">

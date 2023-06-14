@@ -76,9 +76,9 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
           <span>Vote</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?hal=data-vote">
+        <a class="nav-link" href="?hal=riwayat-vote">
           <i class="fas fa-fw fa-chart-bar"></i>
-          <span>Data Vote</span></a>
+          <span>Riwayat Vote</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

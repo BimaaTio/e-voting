@@ -15,4 +15,6 @@ if ($_GET['hal'] == '') {
   include 'pages/list-vote.php';
 } else if ($_GET['hal'] == 'vote' && $_GET['nis'] == $_GET['nis']) {
   include 'pages/detail-vote.php';
+} else if ($_GET['hal'] == 'riwayat-vote') {
+  include 'pages/riwayat-vote.php';
 }

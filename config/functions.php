@@ -38,12 +38,13 @@ function register($data)
 
   $uid    = substr(randNumb(), 4);
   $nama   = ucwords(htmlspecialchars(stripslashes($data['name'])));
+  $username = htmlspecialchars(stripslashes($data['username']));
   $email  = htmlspecialchars(stripslashes($data['email']));
   $pass   = mysqli_real_escape_string($conn, $data['pass']);
   $level  = $data['level'];
   //! Cek email
-  $cek   = query("SELECT * FROM users WHERE email = '$email' ");
-  if ($cek) {
+  $cekEmail   = query("SELECT * FROM users WHERE email = '$email' ");
+  if ($cekEmail) {
     echo
     "
       <script>
@@ -52,10 +53,20 @@ function register($data)
       ";
     return false;
   }
+  $cekUsername = query("SELECT * FROM users WHERE username = '$username' ");
+  if ($cekUsername) {
+    echo
+    "
+      <script>
+      alert('Username Sudah dipakai!, Silahkan Gunakan Username lain')
+      </script>
+      ";
+    return false;
+  }
   // Encrypt password yang akan dimasukan kedalam database
   $password = password_hash($pass, PASSWORD_BCRYPT);
 
-  mysqli_query($conn,"INSERT INTO users VALUES($uid,'$nama','$email','$password','$level', CURDATE())");
+  mysqli_query($conn, "INSERT INTO users VALUES($uid,'$nama','$username','$email','$password','$level', CURDATE())");
   return mysqli_affected_rows($conn);
 }
 //= Edit Profile
@@ -64,9 +75,10 @@ function editProfile($data) {
 
   $uid = $data['uid'];
   $nama = ucwords(htmlspecialchars(stripslashes($data['nama'])));
+  $username = htmlspecialchars(stripslashes($data['username']));
   $email = htmlspecialchars(stripslashes($data['email']));
 
-  mysqli_query($conn, "UPDATE users SET nama = '$nama', email = '$email' WHERE uid = $uid");
+  mysqli_query($conn, "UPDATE users SET nama = '$nama', username = '$username' , email = '$email' WHERE uid = $uid");
   return mysqli_affected_rows($conn);
 }
 //= Ubah Password
@@ -93,7 +105,7 @@ function ubahPassword($data) {
 function tambahKandidat($data) {
   global $conn;
 
-  $nis  = $data['nis'];
+  $nis  = substr(randNumb(), 4);
   $nama = ucwords(htmlspecialchars(stripslashes($data['name'])));
   $kelas = htmlspecialchars(stripslashes($data['kelas']));
 
@@ -123,26 +135,28 @@ function tambahKandidat($data) {
   mysqli_query($conn,"INSERT INTO candidate VALUES('$nis','$nama','$kelas', CURDATE())");
   return mysqli_affected_rows($conn);
 }
-//= Edit Akun
-function editAkun($data) {
-  global $conn;
-
-  $uid = $data['id'];
-  $nama = ucwords(htmlspecialchars(stripslashes($data['name'])));
-  $email = htmlspecialchars(stripslashes($data['email']));
-
-  mysqli_query($conn, "UPDATE users SET nama = '$nama', email = '$email' WHERE uid = '$uid'");
-  return mysqli_affected_rows($conn);
-}
 //= Edit Data Kandidat
-function editKandidat($data) {
+function editKandidat($data)
+{
   global $conn;
 
   $id = $data['id'];
-  $nis = htmlspecialchars($data['editNis']);
   $nama = ucwords(htmlspecialchars(stripslashes($data['editNama'])));
   $kelas = strtoupper(htmlspecialchars(stripslashes($data['editKelas'])));
 
-  mysqli_query($conn, "UPDATE candidate SET nis = $nis, nama = '$nama', kelas = '$kelas' WHERE nis = $id");
+  mysqli_query($conn, "UPDATE candidate SET nama = '$nama', kelas = '$kelas' WHERE nis = $id");
   return mysqli_affected_rows($conn);
+}
+//= Vote
+function vote($data)
+{
+  global $conn;
+
+  $uid = $data['uid'];
+  $nis = $data['nis'];
+  $statusVote = $data['options'];
+
+  mysqli_query($conn, "INSERT INTO vote VALUES(NULL,$uid,$nis,'$statusVote',CURRENT_TIMESTAMP())");
+  return mysqli_affected_rows($conn);
+  // var_dump($data);
 }
