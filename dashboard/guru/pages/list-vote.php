@@ -43,7 +43,6 @@ WHERE NOT EXISTS (
             <thead class="text-center">
               <tr>
                 <th width="1%">No</th>
-                <th>NIS</th>
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th width="5%"></th>
@@ -54,7 +53,6 @@ WHERE NOT EXISTS (
               foreach ($listVote as $kandidat) : ?>
                 <tr>
                   <td><?= $no++ ?></td>
-                  <td><?= $kandidat['nis'] ?></td>
                   <td><?= $kandidat['nama'] ?></td>
                   <td><?= $kandidat['kelas'] ?></td>
                   <td>

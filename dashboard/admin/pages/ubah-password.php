@@ -1,19 +1,17 @@
-<?php 
-if(isset($_POST['submit'])){
-  if(ubahPassword($_POST) > 0){
+<?php
+if (isset($_POST['submit'])) {
+  if (ubahPassword($_POST) > 0) {
     echo
     "
       <script>
-      alert('Password Berhasil diubah!')
-      document.location.href='?hal=profile';
+      document.location.href='?hal=profile?sip=1&msg=Berhasil Mengubah Password';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Mengubah Password!')
-      document.location.href='?hal=ubah-password';
+      document.location.href='?hal=ubah-password&ops=1&msg=Gagal Mengubah Password';
       </script>
       ";
   }
@@ -24,6 +22,14 @@ if(isset($_POST['submit'])){
 </div>
 <div class="row justify-content-center">
   <div class="col-8">
+    <?php if (isset($_GET['ops']) == 'gagal' && isset($_GET['msg'])) : ?>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Oops!</strong> <?= $_GET['msg'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
     <div class="card">
       <div class="card-header">Ubah Password</div>
     </div>

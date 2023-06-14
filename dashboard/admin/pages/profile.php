@@ -5,6 +5,22 @@
 </div>
 <div class="row justify-content-center">
   <div class="col-8">
+    <?php if (isset($_GET['sip']) == 'berhasil' && isset($_GET['msg'])) : ?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Siip!</strong> <?= $_GET['msg'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
+    <?php if (isset($_GET['ops']) == 'gagal' && isset($_GET['msg'])) : ?>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Oops!</strong> <?= $_GET['msg'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php endif; ?>
     <div class="card">
       <div class="card-header">Profil Saya</div>
     </div>

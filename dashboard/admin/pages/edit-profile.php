@@ -4,16 +4,14 @@ if (isset($_POST['submit'])) {
     echo
     "
       <script>
-      alert('Berhasil Mengedit Profil')
-      document.location.href='?hal=profile';
+      document.location.href='?hal=profile&sip=1&msg=Berhasil Mengedit Profil!';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Mengedit Profil')
-      document.location.href='?hal=edit-profile';
+      document.location.href='?hal=edit-profile&ops=1&msg=Gagal Mengedit Profil!';
       </script>
       ";
   }

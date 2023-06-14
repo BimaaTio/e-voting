@@ -43,16 +43,6 @@ function register($data)
   $pass   = mysqli_real_escape_string($conn, $data['pass']);
   $level  = $data['level'];
   //! Cek email
-  $cekEmail   = query("SELECT * FROM users WHERE email = '$email' ");
-  if ($cekEmail) {
-    echo
-    "
-      <script>
-      alert('Email Sudah ada!, Silahkan Gunakan Email lain')
-      </script>
-      ";
-    return false;
-  }
   $cekUsername = query("SELECT * FROM users WHERE username = '$username' ");
   if ($cekUsername) {
     echo
@@ -77,6 +67,16 @@ function editProfile($data) {
   $nama = ucwords(htmlspecialchars(stripslashes($data['nama'])));
   $username = htmlspecialchars(stripslashes($data['username']));
   $email = htmlspecialchars(stripslashes($data['email']));
+  $cekEmail   = query("SELECT * FROM users WHERE email = '$email' ");
+  if ($cekEmail) {
+    echo
+    "
+      <script>
+      alert('Email Sudah ada!, Silahkan Gunakan Email lain')
+      </script>
+      ";
+    return false;
+  }
 
   mysqli_query($conn, "UPDATE users SET nama = '$nama', username = '$username' , email = '$email' WHERE uid = $uid");
   return mysqli_affected_rows($conn);

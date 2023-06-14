@@ -33,6 +33,8 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
   <!-- Custom styles for this template-->
   <link href="../../assets/template/css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 
 </head>
 

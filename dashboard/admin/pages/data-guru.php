@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
     echo
     "
       <script>
-      alert('Berhasil Membuat Akun')
+      document.location.href='?hal=data-guru&sip=1&msg=Berhasil Membuat Akun Guru!';
       </script>
       ";
   } else {
@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     echo
     "
       <script>
-      alert('Gagal Membuat Akun')
+      document.location.href='?hal=data-guru&ops=1&msg=Gagal Membuat Akun Guru!';
       </script>
       ";
   }
@@ -22,14 +22,14 @@ if (isset($_POST['editAkun'])) {
     echo
     "
       <script>
-      alert('Berhasil Mengubah Akun')
+      document.location.href='?hal=data-guru&sip=1&msg=Berhasil Mengedit Akun Guru!';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Membuat Akun')
+      document.location.href='?hal=data-guru&ops=1&msg=Gagal Membuat Akun Guru!';
       </script>
       ";
   }
@@ -126,7 +126,7 @@ $dataGuru = query("SELECT * FROM users WHERE level='guru'");
           <div class="mb-3 row">
             <label for="email" class="col-sm-2 col-form-label">Email:</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="email" id="email" required>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Optional">
             </div>
           </div>
           <div class="mb-3 row">

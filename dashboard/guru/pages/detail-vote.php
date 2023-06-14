@@ -7,18 +7,16 @@ if (isset($_POST['submit'])) {
     echo
     "
       <script>
-      alert('Berhasil Melakukan Vote')
-      document.location.href='?hal=votes';
+      document.location.href='?hal=votes&sip=1&msg=Berhasil Melakukan Vote!';
       </script>
       ";
   } else {
-    // echo
-    // "
-    //   <script>
-    //   alert('Gagal Melakukan vote')
-    //   document.location.href='?hal=votes';
-    //   </script>
-    //   ";
+    echo
+    "
+      <script>
+      document.location.href='?hal=votes&ops=1&msg=Gagal Melakukan Vote!';
+      </script>
+      ";
   }
 }
 ?>

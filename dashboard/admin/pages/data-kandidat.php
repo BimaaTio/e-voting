@@ -4,14 +4,14 @@ if (isset($_POST['tambahKandidat'])) {
     echo
     "
       <script>
-      alert('Berhasil Menambah Kandidat')
+      document.location.href='?hal=data-kandidat&sip=1&msg=Berhasil Menambah Kandidat!';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Menambah Kandidat')
+      document.location.href='?hal=data-kandidat&ops=1&msg=Gagal Menambah Profil!';
       </script>
       ";
   }
@@ -22,14 +22,14 @@ if (isset($_POST['editKandidat'])) {
     echo
     "
       <script>
-      alert('Berhasil Mengubah Data Kandidat')
+      document.location.href='?hal=data-kandidat&sip=1&msg=Berhasil Mengedit Data Kandidat!';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Mengubah Data Kandidat')
+      document.location.href='?hal=data-kandidat&ops=1&msg=Gagal Mengedit Data Kandidat!';
       </script>
       ";
   }

@@ -4,16 +4,14 @@ if (isset($_POST['submit'])) {
     echo
     "
       <script>
-      alert('Berhasil Mengedit Profil')
-      document.location.href='?hal=profile';
+      document.location.href='?hal=profile&sip=1&msg=Berhasil Mengedit Profil!';
       </script>
       ";
   } else {
     echo
     "
       <script>
-      alert('Gagal Mengedit Profil')
-      document.location.href='?hal=edit-profile';
+      document.location.href='?hal=edit-profile&ops=1&msg=Gagal Mengedit Profil!';
       </script>
       ";
   }
@@ -45,7 +43,7 @@ if (isset($_POST['submit'])) {
         <div class="mb-3 row">
           <label for="email" class="col-sm-2 col-form-label">Email :</label>
           <div class="col-sm">
-            <input type="text" name="email" class="form-control" value="<?= $dataLogin['email'] ?>" required>
+            <input type="text" name="email" class="form-control" value="<?= $dataLogin['email'] ?>">
           </div>
         </div>
         <div class="mb-3 row text-right">
