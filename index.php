@@ -25,6 +25,14 @@ if (isset($_POST['masuk'])) {
       header("Location:dashboard/guru/?hal=");
       exit;
     }
+    if ($row['level'] === 'super') {
+      if (password_verify($pass, $row['password'])) {
+        $_SESSION['loginSuper'] = true;
+        $_SESSION['uid'] = $row['uid'];
+      }
+      header("Location:dashboard/sa/?hal=");
+      exit;
+    }
   }
   $error = true;
 }
