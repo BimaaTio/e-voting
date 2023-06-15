@@ -84,7 +84,7 @@ $dataKandidat = query("SELECT * FROM candidate");
                   <td>
                     <!-- <a href="" class="btn btn-sm btn-success"><i class="fas fa-info-circle"></i></a> -->
                     <a data-role="editKandidat" data-id="<?= $dk['nis'] ?>" data-toggle="modal" data-target="#editKandidat" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                    <a href="hapus.php?nis=<?= $dk['nis'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                    <a href="hapus.php?nis=<?= $dk['nis'] ?>" id="hapus" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>
               <?php endforeach; ?>

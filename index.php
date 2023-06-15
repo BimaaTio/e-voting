@@ -47,6 +47,7 @@ if (isset($_POST['masuk'])) {
   <!-- CSS Lib -->
   <link rel="stylesheet" href="assets/css/bs.css">
   <link rel="stylesheet" href="assets/css/login.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
   <title>E-Voting</title>
 </head>
 
@@ -57,6 +58,12 @@ if (isset($_POST['masuk'])) {
       <?php if (isset($error)) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Oops</strong> Email / Password salah!
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($_GET['bad'])) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Oops</strong> <?= $_GET['bad'] ?>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <?php endif; ?>
@@ -75,6 +82,7 @@ if (isset($_POST['masuk'])) {
   </main>
   <!-- JS Lib -->
   <script src="assets/js/bs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 
 </html>

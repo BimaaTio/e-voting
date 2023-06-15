@@ -37,7 +37,6 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     </link>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -204,7 +203,7 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
     <script src="../../assets/template/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../assets/template/vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="../../assets/template/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../../assets/template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
@@ -217,25 +216,29 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
     <script src="../../assets/template/js/demo/chart-area-demo.js"></script>
     <script>
         $(document).ready(function() {
-            // Toastr
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-
+            // SweetAlert
+            $(document).on('click', '#hapus', function(e) {
+                e.preventDefault();
+                var href = $(this).attr('href');
+                Swal.fire({
+                    title: 'Yakin Mau Dihapus?',
+                    text: "Kamu Tidak Dapat Mengambalikan Data yang dihapus!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya Hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.location.href = href
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            });
             // Datatables
             $('#akunGuru').DataTable({
                 dom: 'LfBrtip',

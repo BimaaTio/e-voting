@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
         <div class="mb-1 row">
           <p>Kelas : <?= $data['kelas'] ?></p>
         </div>
-        <form action="" method="post">
+        <form action="" method="post" id="konfirm">
           <input type="hidden" name="uid" value="<?= $uid ?>">
           <input type="hidden" name="nis" value="<?= $nis ?>">
           <div class="row text-center">
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
             <div class="col">
-              <button type="submit" class="btn btn-md btn-primary" name="submit"><i class="fas fa-file-upload"></i> Submit</button>
+              <button type="submit" onclick="return confirm('Yakin Dengan Pilihan Kamu?')" class="btn btn-md btn-primary" name="submit"><i class="fas fa-file-upload"></i> Submit</button>
             </div>
           </div>
         </form>

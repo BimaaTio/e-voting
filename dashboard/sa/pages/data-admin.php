@@ -87,7 +87,7 @@ $dataGuru = query("SELECT * FROM users WHERE level='admin'");
                     <td><?= $dg['tgl_dibuat'] ?></td>
                     <td>
                       <a data-toggle="modal" data-target="#editAkun" data-role="editAkun" data-id="<?= $dg['uid'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                      <a href="hapus.php?uid=<?= $dg['uid'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                      <a href="hapus.php?uid=<?= $dg['uid'] ?>" id="hapus" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

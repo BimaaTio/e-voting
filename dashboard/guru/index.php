@@ -208,6 +208,7 @@ $dataLogin = query("SELECT * FROM users WHERE uid = $uid")[0];
   <script src="../../assets/template/js/demo/chart-area-demo.js"></script>
   <script>
     $(document).ready(function() {
+
       $('#vote').DataTable({
         searching: true,
         dom: 'Lfrtip'
